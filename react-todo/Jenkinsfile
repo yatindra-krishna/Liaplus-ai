@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "yatindra-krishna/node-app"
+        PORT = "5173"
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                script {
+                    git url: "https://github.com/yatindra-krishna/Liaplus-ai.git", branch: "main"
+                }
+            }
+        }
+
+        stage('Run Container') {
+            steps {
+                sh  "cd react-todo/ && docker-compose down && docker-compose up -d "
+            }
+        }
+    }
+
+    post {
+        success {
+            echo "Deployment Successful!"
+        }
+        failure {
+            echo "Build Failed!"
+        }
+    }
+}
