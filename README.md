@@ -19,43 +19,29 @@ Steps to Deploy the Application:
   
 	2.	Create a Resource Group:
 	•	In Azure Portal, navigate to Resource Groups.
- 
 	•	Click Add and provide a name for the resource group (cicd-pipeline_group).
- 
 	•	Select a region Central India (zone 1), then click Review + Create.
  
 	3. Create an Azure Virtual Machine:
 	•	In Azure Portal, navigate to Virtual Machines and click Add.
- 
 	•	Select the Resource Group and configure the VM settings (image, size, authentication).
- 
 	•	Create and ensuring proper network security rules (e.g., open port 80, 8080,9000,3000,5173 etc).
  
-	4. Set Up Docker on the Azure VM:
- 
+	4. Set Up Docker on the Azure VM
+
 	5. Install Jenkins on the VM:
  
 	1.	Install Jenkins on the VM:
- 
 	•	Follow installation steps for your VM’s OS (Ubuntu example: sudo apt install openjdk-17-jdk && sudo apt install jenkins).
- 
 	2.	Start Jenkins:
- 
 	•	Access Jenkins via http://98.70.55.30:8080.
- 
 	6. Integrate Jenkins with GitHub:
- 
 	•	GitHub Webhook: In your GitHub repository, add a webhook pointing to Jenkins.
- 
 	•	Jenkins Configuration: Set up a Pipeline Job in Jenkins with GitHub repository details and configure the pipeline using a Jenkinsfile for CI/CD.
 	7. Deploy the Application with Jenkins:
- 
 	•	Set up the Jenkins pipeline to build, test, and deploy my Todo-app.
- 
 	•	On push to GitHub, the webhook triggers Jenkins to pull the code, Do docker compose up, and deploy it to the Azure VM.
- 
 	8. Access the Application:
- 
 	•	After successful deployment, access your app through the public IP of the Azure VM.
  
   <img width="1280" alt="Screenshot 2025-02-05 at 1 25 15 PM" src="https://github.com/user-attachments/assets/fdd23e98-8937-4d7e-badf-8949d7bf6dae" />
@@ -64,17 +50,11 @@ This summary outlines the steps for deploying a Todo-app using Azure VM, Docker,
 Azure Configurations Used:
 
 	•	Resource Group: cicd-pipeline_group
- 
 	•	App Service: Todo-app
- 
 	•	App Service Plan: Azure for Students
- 
 	•	Region: Central India(zone 1)
- 
 	•	Runtime Env: Node.js
- 
 	•	Deployment Source: GitHub
- 
 	•	Public URL: [https://my-nodejs-webapp.azurewebsites.net](http://98.70.55.30:5173/)
 
 Screenshots of a Successful Deployment:
