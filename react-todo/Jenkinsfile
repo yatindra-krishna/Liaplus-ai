@@ -21,20 +21,6 @@ pipeline {
             }
         }
 
-        // Updated SonarQube Analysis Stage
-        stage('SonarQube Analysis') {
-
-            steps {
-                           sonar-scanner \
-                      -Dsonar.projectKey=Node-todo-app \
-                      -Dsonar.sources=. \
-                      -Dsonar.host.url=http://98.70.55.30:9000 \
-                      -Dsonar.token=sqp_12a2b8c6182396f42337eddb9946b1d960a03a36
-                }
-            }
-        }
-    }
-
     post {
         success {
             echo "Deployment Successful!"
