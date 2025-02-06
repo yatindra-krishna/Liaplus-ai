@@ -61,11 +61,11 @@ Impact
 
 Mitigation Strategies
 
-✔ Dependency Scanning – Use automated tools to scan dependencies for known vulnerabilities, just like inspecting building materials before use.
-✔ Keep Dependencies Updated – Regularly update libraries and dependencies to their latest versions to apply security patches.
-✔ Vulnerability Management – Establish a structured process for tracking and addressing vulnerabilities.
-✔ Software Composition Analysis (SCA) – Utilize SCA tools to analyze dependencies and assess security risks, giving a complete picture of potential weaknesses.
-✔ Compliance Alignment – These practices support:
+• Dependency Scanning – Use automated tools to scan dependencies for known vulnerabilities, just like inspecting building materials before use.
+• Keep Dependencies Updated – Regularly update libraries and dependencies to their latest versions to apply security patches.
+• Vulnerability Management – Establish a structured process for tracking and addressing vulnerabilities.
+• Software Composition Analysis (SCA) – Utilize SCA tools to analyze dependencies and assess security risks, giving a complete picture of potential weaknesses.
+• Compliance Alignment – These practices support:
 	•	ISO 27001 (A.14.2 – System Development)
 	•	GDPR (Article 32 – Security of Processing)<br>
  
@@ -81,10 +81,10 @@ Indexes significantly improve query performance by reducing the number of rows s
 
 Types of Indexes in PostgreSQL
 
-✔ B-Tree Index (Default) – Ideal for equality (=) and range (>, <) queries.
-✔ GIN (Generalized Inverted Index) – Used for full-text search and JSONB fields.
-✔ BRIN (Block Range Index) – Suitable for large tables with sequentially inserted data.
-✔ Hash Index – Useful for exact-match queries.
+• B-Tree Index (Default) – Ideal for equality (=) and range (>, <) queries.
+• GIN (Generalized Inverted Index) – Used for full-text search and JSONB fields.
+• BRIN (Block Range Index) – Suitable for large tables with sequentially inserted data.
+• Hash Index – Useful for exact-match queries.
 
 Example: Creating an Index for Faster Lookups
 
@@ -105,10 +105,10 @@ Poorly written queries can cause slow performance and high resource usage.
 
 Best Practices for Query Optimization
 
-. Use EXPLAIN ANALYZE – Identifies slow operations in queries.
-. Avoid SELECT * – Fetch only required columns to reduce data load.
-. Use Proper Joins – Index foreign keys to speed up JOIN operations.
-. Use CTEs (WITH Queries) Wisely – Materialize data efficiently when needed.
+• Use EXPLAIN ANALYZE – Identifies slow operations in queries.
+• Avoid SELECT * – Fetch only required columns to reduce data load.
+• Use Proper Joins – Index foreign keys to speed up JOIN operations.
+• Use CTEs (WITH Queries) Wisely – Materialize data efficiently when needed.
 
 Example: Optimizing a JOIN Query
 
@@ -137,9 +137,9 @@ Partitioning divides large tables into smaller, manageable pieces, improving que
 
 Types of Partitioning in PostgreSQL
 
-. Range Partitioning – Ideal for date-based data (e.g., partitioning orders by year).
-. List Partitioning – Used for categorical data (e.g., partitioning users by country).
-. Hash Partitioning – Distributes data evenly across partitions for load balancing.
+• Range Partitioning – Ideal for date-based data (e.g., partitioning orders by year).
+• List Partitioning – Used for categorical data (e.g., partitioning users by country).
+• Hash Partitioning – Distributes data evenly across partitions for load balancing.
 
 Example: Partitioning an Orders Table by Year
 
@@ -164,10 +164,10 @@ This section provides a Bash script for automating server setup (installing nece
 
 Features:
 
-. Installs essential packages (Nginx, Git, Docker)
-. Creates a new user with sudo access
-. Configures firewall rules (UFW)
-. Enables and starts necessary services
+• Installs essential packages (Nginx, Git, Docker)
+• Creates a new user with sudo access
+• Configures firewall rules (UFW)
+• Enables and starts necessary services
 
 Script:
 
@@ -223,9 +223,9 @@ sudo ./server_setup.sh
 
 Features:
 
-. Analyzes system logs (/var/log/syslog or /var/log/nginx/access.log)
-. Counts occurrences of errors
-. Extracts and displays critical log messages
+• Analyzes system logs (/var/log/syslog or /var/log/nginx/access.log)
+• Counts occurrences of errors
+• Extracts and displays critical log messages
 
 Script:
 
@@ -270,10 +270,10 @@ A well-designed DR plan ensures minimal downtime and data loss while maintaining
 
 Key Objectives of a Disaster Recovery Plan
 
-. Minimize Downtime: Ensure quick recovery with minimal impact on users.
-. Prevent Data Loss: Use frequent backups and replication techniques.
-. Ensure Compliance: Meet security and regulatory requirements.
-. Optimize Cost: Balance cost-effective solutions with business needs.
+• Minimize Downtime: Ensure quick recovery with minimal impact on users.
+• Prevent Data Loss: Use frequent backups and replication techniques.
+• Ensure Compliance: Meet security and regulatory requirements.
+• Optimize Cost: Balance cost-effective solutions with business needs.
 
 2. Understanding RTO & RPO
 
@@ -359,10 +359,10 @@ Example: Restoring a Backup in Azure SQL Database
 
 To reduce downtime and ensure continuous availability:
 
-. Use Azure Availability Zones – Deploy resources across multiple data centers.
-. Deploy Load Balancers – Distribute traffic between multiple servers.
-. Use Active Geo-Replication – Keep secondary copies of databases in another region.
-. Implement Auto-Scaling – Automatically adjust resources based on demand.
+• Use Azure Availability Zones – Deploy resources across multiple data centers.
+• Deploy Load Balancers – Distribute traffic between multiple servers.
+• Use Active Geo-Replication – Keep secondary copies of databases in another region.
+• Implement Auto-Scaling – Automatically adjust resources based on demand.
 
 ✅ Combining DR with HA minimizes downtime and ensures seamless recovery.
 
@@ -379,9 +379,9 @@ A mix of automated backups, geo-redundancy, and high availability ensures a robu
 
 ✅ Key Takeaways
 
-. Define RTO & RPO based on business needs.
-. Automate backups for VMs, databases, and storage.
-. Enable geo-replication for mission-critical applications.
-. Regularly test the DR plan to ensure quick recovery.
+• Define RTO & RPO based on business needs.
+• Automate backups for VMs, databases, and storage.
+• Enable geo-replication for mission-critical applications.
+• Regularly test the DR plan to ensure quick recovery.
 
 This structured document is ready for direct use in enterprise documentation. Let me know if you need any refinements! 😊
