@@ -133,22 +133,31 @@ Security Risks in DevOps & Mitigation
 1. Insecure Infrastructure as Code (IaC)
  Risk: Flawed IaC can lead to unauthorized access, data breaches, and system downtime.
  Mitigation:
+
 • Code Reviews & Automated Scanning
+
 • Version Control & Least Privilege Access
+
 • Compliance: ISO 27001 (A.12.5), GDPR (Art. 32), SOC 2
 
 2. Leaky Secrets Management
  Risk: Exposed API keys & credentials lead to unauthorized access.
+
  Mitigation:
 • Secrets Management Tools & Environment Variables
+
 • Avoid Hardcoding & Rotate Secrets Regularly
+
 • Compliance: ISO 27001 (A.12.1), GDPR (Art. 32), SOC 2
 
 3. Vulnerable Dependencies
  Risk: Outdated libraries introduce security threats.
  Mitigation:
+
 • Dependency Scanning & Regular Updates
+
 • Software Composition Analysis (SCA)
+
 • Compliance: ISO 27001 (A.14.2), GDPR (Art. 32)
 
 <h1>5. Database & Storage Optimization (PostgreSQL)</h1>
@@ -158,16 +167,22 @@ Security Risks in DevOps & Mitigation
  Issue: Full table scans slow down queries.
   Solution:
 • Use B-Tree Index for lookups
+
 • Before: SELECT * FROM users WHERE email = 'user@example.com'; (Slow)
+
 • After: CREATE INDEX idx_email ON users (email); (Fast lookup)
 
 2. Query Optimization
 
   Issue: Slow queries due to poor joins & unnecessary data fetching.
   Solution:
+
 • Use EXPLAIN ANALYZE for performance insights
+
 • Avoid SELECT *, index foreign keys
+
 • Before: Unindexed JOIN (Slow)
+
 • After: Indexed JOIN (Faster retrieval)
 
 3. Data Partitioning for Large Tables
@@ -175,8 +190,11 @@ Security Risks in DevOps & Mitigation
   Issue: Full-table scans slow down queries on large datasets.
   Solution:
 • Use Partitioning:
+
 • Range Partitioning (e.g., orders by year)
+
 • List Partitioning (e.g., users by country)
+
 • Hash Partitioning (even data distribution)
 
 Example:
