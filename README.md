@@ -119,10 +119,11 @@ JOIN users ON orders.user_id = users.id
 WHERE users.email = 'user@example.com';
 
 ✅ Improvement: Queries execute faster using indexed foreign keys.
+---
 
-Automation & Scripting
+#6. Automation & Scripting
 
-Bash Script for Server Setup
+##Bash Script for Server Setup
 
 This script automates server setup, installs essential packages, and configures a firewall.
 
