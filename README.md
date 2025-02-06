@@ -360,8 +360,11 @@ Example: Restoring a Backup in Azure SQL Database
 To reduce downtime and ensure continuous availability:
 
 • Use Azure Availability Zones – Deploy resources across multiple data centers.
+
 • Deploy Load Balancers – Distribute traffic between multiple servers.
+
 • Use Active Geo-Replication – Keep secondary copies of databases in another region.
+
 • Implement Auto-Scaling – Automatically adjust resources based on demand.
 
 ✅ Combining DR with HA minimizes downtime and ensures seamless recovery.
@@ -374,14 +377,3 @@ Strategy	RTO (Downtime Tolerance)	RPO (Data Loss Tolerance)
 Basic Backups Only	4-8 hours	24 hours
 Automated Backups + Geo-Replication	1-2 hours	15 minutes
 Full HA with Multi-Region Failover	Near Zero (< 5 min)	Near Zero (< 1 min)
-
-A mix of automated backups, geo-redundancy, and high availability ensures a robust disaster recovery plan in Azure. 🚀
-
-✅ Key Takeaways
-
-• Define RTO & RPO based on business needs.
-• Automate backups for VMs, databases, and storage.
-• Enable geo-replication for mission-critical applications.
-• Regularly test the DR plan to ensure quick recovery.
-
-This structured document is ready for direct use in enterprise documentation. Let me know if you need any refinements! 😊
