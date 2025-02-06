@@ -14,5 +14,35 @@ What it is: IaC involves using code to manage and provision infrastructure (serv
       Principle of Least Privilege: Ensure that the accounts used to deploy IaC possess only the necessary permissions. Avoid granting access to everything when you only need to open one door.
       Compliance Alignment: These practices directly support ISO 27001 (A.12.5 - Information System Acquisition, Development and Maintenance), GDPR (Article 32 - Security of processing), and SOC 2 (Common Criteria - Security).
 
-Risk 2: Leaky Secrets Management
-What it is: Applications frequently require secrets such as passwords, API keys, and database credentials. Storing these directly in...
+**Risk 2: Leaky Secrets Management**
+What it is: Applications frequently require secrets such as passwords, API keys, and database credentials. Storing these directly in code or configuration files poses a significant risk, akin to hiding your house keys under the doormat.  
+Impact: This can lead to unauthorized access, data breaches, and compromised systems.  
+**Mitigation Strategies: ** 
+**Secrets Management Tools:** Utilize specialized tools designed to securely store and manage secrets. These tools encrypt sensitive information and regulate access, much like a secure safe for your valuables.  
+**Environment Variables**: Keep secrets as environment variables and access them during runtime, which helps keep them out of the codebase.  
+**Avoid Hardcoding:** Never hardcode secrets directly into your code; it's similar to writing your bank PIN on a sticky note attached to your ATM card.  
+**Regular Rotation:** Regularly change your secrets to minimize the impact of a potential breach, much like periodically changing the locks on your house.  
+**Compliance Alignment:** These practices help meet standards such as ISO 27001 (A.12.1 - Information Security Policies), GDPR (Article 32 - Security of processing), and SOC 2 (Common Criteria - Security).  
+
+**Risk 3: Vulnerable Dependencies  **
+What it is: Modern applications depend on third-party libraries and components, which may harbor vulnerabilities that attackers can exploit. This is comparable to using building materials from a supplier who unknowingly provided defective parts.  
+**Impact:** This can result in application compromise, data breaches, and denial-of-service attacks.  
+
+**Mitigation Strategies:  **
+
+**Secrets Management Tools:** Utilize specialized tools designed for securely storing and managing secrets. These tools encrypt sensitive information and regulate access, much like a secure safe for your important belongings.
+**Environment Variables:** Keep secrets as environment variables and retrieve them during runtime. This approach helps to keep them out of the codebase.
+**Avoid Hardcoding:** Never hardcode secrets directly into your code. It's akin to writing your bank PIN on a sticky note attached to your ATM card.
+**Regular Rotation:** Regularly change your secrets to minimize the impact of a potential breach. Think of it as changing the locks on your house from time to time.
+**Compliance Alignment:** These practices align with ISO 27001 (A.12.1 - Information Security Policies), GDPR (Article 32 - Security of processing), and SOC 2 (Common Criteria - Security).
+
+**Risk 3: Vulnerable Dependencies**
+
+What it is: Modern applications depend on third-party libraries and components, which may harbor vulnerabilities that attackers can exploit. It's similar to using construction materials from a supplier who unknowingly provided defective parts.
+Impact: This can lead to application compromise, data breaches, and denial-of-service attacks.
+Mitigation Strategies:
+Dependency Scanning: Employ tools to automatically scan your dependencies for known vulnerabilities, much like inspecting building materials before they are used.
+Keep Dependencies Updated: Regularly update your dependencies to their latest versions, which typically include security patches. This is like addressing any weaknesses found in the building materials.
+Vulnerability Management: Establish a process to track and manage vulnerabilities in your dependencies, similar to having a system for reporting and fixing issues found in your home.
+Software Composition Analysis (SCA): Utilize SCA tools to gain a comprehensive view of your application's dependencies and their associated risks, providing a complete picture of the materials used in your house.
+Compliance Alignment: These practices support ISO 27001 (A.14.2 - System Development), GDPR (Article 32 - Security of processing).
