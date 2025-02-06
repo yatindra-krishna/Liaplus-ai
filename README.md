@@ -150,3 +150,36 @@ Security Risks in DevOps & Mitigation
 • Dependency Scanning & Regular Updates
 • Software Composition Analysis (SCA)
 • Compliance: ISO 27001 (A.14.2), GDPR (Art. 32)
+
+<h1>5. Database & Storage Optimization (PostgreSQL)</h1>
+
+1. Indexing for Faster Queries
+
+ Issue: Full table scans slow down queries.
+  Solution:
+• Use B-Tree Index for lookups
+• Before: SELECT * FROM users WHERE email = 'user@example.com'; (Slow)
+• After: CREATE INDEX idx_email ON users (email); (Fast lookup)
+
+2. Query Optimization
+
+  Issue: Slow queries due to poor joins & unnecessary data fetching.
+  Solution:
+• Use EXPLAIN ANALYZE for performance insights
+• Avoid SELECT *, index foreign keys
+• Before: Unindexed JOIN (Slow)
+• After: Indexed JOIN (Faster retrieval)
+
+3. Data Partitioning for Large Tables
+
+  Issue: Full-table scans slow down queries on large datasets.
+  Solution:
+• Use Partitioning:
+• Range Partitioning (e.g., orders by year)
+• List Partitioning (e.g., users by country)
+• Hash Partitioning (even data distribution)
+
+Example:
+ CREATE TABLE orders PARTITION BY RANGE (order_date);
+ CREATE TABLE orders_2024 PARTITION OF orders 
+ FOR VALUES FROM ('2024-01-01') TO ('2024-12-31');
