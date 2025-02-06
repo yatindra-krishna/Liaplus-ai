@@ -68,3 +68,95 @@ Mitigation Strategies
 ✔ Compliance Alignment – These practices support:
 	•	ISO 27001 (A.14.2 – System Development)
 	•	GDPR (Article 32 – Security of Processing)
+ 
+<h1>5. Database & Storage Optimization</h1>
+
+<h2>Task: Optimize a PostgreSQL Database for Performance</h2>
+
+Optimizing PostgreSQL enhances query performance, reduces resource consumption, and ensures efficient data retrieval. Below are key optimization techniques, including indexing, query optimization, and data partitioning, along with example queries before and after optimization.
+
+1. Indexing for Faster Queries
+
+Indexes significantly improve query performance by reducing the number of rows scanned.
+
+Types of Indexes in PostgreSQL
+
+✔ B-Tree Index (Default) – Ideal for equality (=) and range (>, <) queries.
+✔ GIN (Generalized Inverted Index) – Used for full-text search and JSONB fields.
+✔ BRIN (Block Range Index) – Suitable for large tables with sequentially inserted data.
+✔ Hash Index – Useful for exact-match queries.
+
+Example: Creating an Index for Faster Lookups
+
+Before Optimization (Slow Query - Full Table Scan)
+
+SELECT * FROM users WHERE email = 'user@example.com';
+
+After Optimization (Using an Index)
+
+CREATE INDEX idx_email ON users (email);
+SELECT * FROM users WHERE email = 'user@example.com';
+
+✅ Performance Improvement: PostgreSQL now uses the index to locate the row efficiently instead of scanning the entire table.
+
+2. Query Optimization for Better Performance
+
+Poorly written queries can cause slow performance and high resource usage.
+
+Best Practices for Query Optimization
+
+✔ Use EXPLAIN ANALYZE – Identifies slow operations in queries.
+✔ Avoid SELECT * – Fetch only required columns to reduce data load.
+✔ Use Proper Joins – Index foreign keys to speed up JOIN operations.
+✔ Use CTEs (WITH Queries) Wisely – Materialize data efficiently when needed.
+
+Example: Optimizing a JOIN Query
+
+Before Optimization (Slow JOIN Due to Lack of Indexes)
+
+SELECT orders.id, users.name 
+FROM orders 
+JOIN users ON orders.user_id = users.id 
+WHERE users.email = 'user@example.com';
+
+After Optimization (Using Index on Foreign Key and Filter Column)
+
+CREATE INDEX idx_users_email ON users (email);
+CREATE INDEX idx_orders_user_id ON orders (user_id);
+
+SELECT orders.id, users.name 
+FROM orders 
+JOIN users ON orders.user_id = users.id 
+WHERE users.email = 'user@example.com';
+
+✅ Performance Improvement: The database now efficiently retrieves users and their orders using indexes instead of performing a full table scan.
+
+3. Data Partitioning for Large Tables
+
+Partitioning divides large tables into smaller, manageable pieces, improving query performance and maintainability.
+
+Types of Partitioning in PostgreSQL
+
+✔ Range Partitioning – Ideal for date-based data (e.g., partitioning orders by year).
+✔ List Partitioning – Used for categorical data (e.g., partitioning users by country).
+✔ Hash Partitioning – Distributes data evenly across partitions for load balancing.
+
+Example: Partitioning an Orders Table by Year
+
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY, 
+    order_date DATE NOT NULL, 
+    amount DECIMAL NOT NULL
+) PARTITION BY RANGE (order_date);
+  
+CREATE TABLE orders_2024 PARTITION OF orders 
+FOR VALUES FROM ('2024-01-01') TO ('2024-12-31');
+
+✅ Performance Improvement: Queries for a specific year now scan only the relevant partition instead of the entire table.
+
+Conclusion
+
+By implementing indexing, query optimization, and partitioning, PostgreSQL databases can achieve:
+✅ Faster query execution
+✅ Reduced resource consumption
+✅ Better scalability for large datasets.
