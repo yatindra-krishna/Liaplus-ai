@@ -23,12 +23,13 @@ pipeline {
 
         // Updated SonarQube Analysis Stage
         stage('SonarQube Analysis') {
-            environment {
-                SONAR_URL = "http://98.70.55.30:9000/"
-            }
+
             steps {
-                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-                    sh 'cd react-todo/ && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
+                           sonar-scanner \
+                      -Dsonar.projectKey=Node-todo-app \
+                      -Dsonar.sources=. \
+                      -Dsonar.host.url=http://98.70.55.30:9000 \
+                      -Dsonar.token=sqp_12a2b8c6182396f42337eddb9946b1d960a03a36
                 }
             }
         }
