@@ -256,3 +256,132 @@ chmod +x log_analysis.sh
 	3.	Run the script:
 
 ./log_analysis.sh
+
+
+<h1>7. Disaster Recovery & High Availability</h1>
+
+<h2>Task: Implement Backup & Disaster Recovery Strategies for an Enterprise Application in the Cloud</h2>
+
+Disaster Recovery (DR) and High Availability (HA) are essential for ensuring business continuity in the event of failures such as hardware crashes, cyberattacks, data corruption, or natural disasters. This document outlines an effective DR strategy, including Recovery Time Objective (RTO) and Recovery Point Objective (RPO), as well as a step-by-step guide for setting up automated backups in Azure.
+
+1. Disaster Recovery (DR) Strategy Document
+
+A well-designed DR plan ensures minimal downtime and data loss while maintaining compliance with industry regulations such as ISO 27001, SOC 2, and GDPR.
+
+Key Objectives of a Disaster Recovery Plan
+
+✔ Minimize Downtime: Ensure quick recovery with minimal impact on users.
+✔ Prevent Data Loss: Use frequent backups and replication techniques.
+✔ Ensure Compliance: Meet security and regulatory requirements.
+✔ Optimize Cost: Balance cost-effective solutions with business needs.
+
+2. Understanding RTO & RPO
+
+Metric	Definition	Example in Enterprise Application
+Recovery Time Objective (RTO)	Maximum downtime allowed before services must be restored.	If RTO = 2 hours, the system must be operational within 2 hours of failure.
+Recovery Point Objective (RPO)	Maximum acceptable data loss measured in time.	If RPO = 15 minutes, backups must be taken at least every 15 minutes.
+
+How to Set RTO & RPO Based on Business Needs
+	•	Mission-critical systems (e.g., banking, e-commerce) → RTO: 5 min, RPO: 1 min (High Availability with real-time replication).
+	•	Non-critical internal tools → RTO: 12 hours, RPO: 24 hours (Daily backups are sufficient).
+
+3. Backup & Disaster Recovery Strategies
+
+Backup Strategy for Azure Cloud
+
+Azure provides multiple backup solutions for applications, databases, and virtual machines (VMs).
+
+Component	Backup Method	Retention	Recovery Time
+Azure VMs	Azure Backup (Snapshots & Full Backup)	7-30 days	5-15 min
+SQL Databases	Automated Point-in-Time Restore (PITR)	35 days	5-15 min
+Blob Storage	Geo-Redundant Storage (GRS)	7-365 days	Immediate
+
+✅ Best Practice: Use a 3-2-1 backup rule – 3 copies of data, stored on 2 different mediums, with 1 copy offsite (e.g., another Azure region).
+
+4. Example: Setting Up Automated Backups in Azure
+
+Scenario
+
+We will configure automated backups for an Azure Virtual Machine (VM) and an Azure SQL Database using Azure Backup and Geo-Replication.
+
+Step 1: Enable Azure Backup for Virtual Machines
+	1.	Go to Azure Portal → Navigate to “Backup Center”.
+	2.	Click “Create Vault” → Select Recovery Services Vault.
+	3.	In the vault, go to “Backup” → “Backup Policy”.
+	4.	Configure Backup Policy:
+	•	Backup frequency: Daily at 2 AM
+	•	Retention: 30 days
+	•	Instant restore: Enabled
+	5.	Select the VM to Backup → Click Enable Backup.
+
+✅ Azure now automatically backs up the VM every day and retains snapshots for recovery.
+
+Step 2: Set Up Automated Backups for Azure SQL Database
+	1.	Go to Azure SQL Database → Open “Backups” tab.
+	2.	Enable Point-in-Time Restore (PITR):
+	•	Retention: 7 to 35 days.
+	•	Geo-Replication: Enable cross-region replication for high availability.
+	3.	Configure Long-Term Retention (LTR) for compliance needs:
+	•	Weekly backup: Kept for 12 months.
+	•	Monthly backup: Kept for 5 years.
+	4.	Click “Apply” → Azure now automatically backs up the database.
+
+✅ SQL database can now be restored instantly in case of failure.
+
+Step 3: Configure Cross-Region Disaster Recovery (Geo-Redundancy)
+
+To ensure availability even if an entire Azure region fails:
+	1.	Enable Geo-Replication in Azure SQL Database:
+
+ALTER DATABASE mydatabase
+ADD SECONDARY ON SERVER mysecondaryserver;
+
+
+	2.	Use Azure Site Recovery (ASR) for VM failover to another region.
+	3.	Set up a Load Balancer for automatic failover between primary and secondary servers.
+
+✅ Ensures that services remain available even during a major disaster.
+
+5. Testing & Monitoring Disaster Recovery Plan
+
+Regular DR Drills
+	•	Perform quarterly failover tests to validate recovery time.
+	•	Use Azure Backup Reports to monitor backup health.
+
+Example: Restoring a Backup in Azure SQL Database
+	1.	Go to SQL Database → “Restore”.
+	2.	Select a Point-in-Time restore.
+	3.	Choose a new database name → Click “Restore”.
+
+✅ Database is restored with minimal data loss (RPO ≤ 15 min).
+
+6. High Availability (HA) Best Practices
+
+To reduce downtime and ensure continuous availability:
+
+✔ Use Azure Availability Zones – Deploy resources across multiple data centers.
+✔ Deploy Load Balancers – Distribute traffic between multiple servers.
+✔ Use Active Geo-Replication – Keep secondary copies of databases in another region.
+✔ Implement Auto-Scaling – Automatically adjust resources based on demand.
+
+✅ Combining DR with HA minimizes downtime and ensures seamless recovery.
+
+7. Conclusion
+
+By implementing a comprehensive DR & HA strategy, enterprises can minimize downtime, reduce data loss, and ensure compliance.
+
+Strategy	RTO (Downtime Tolerance)	RPO (Data Loss Tolerance)
+Basic Backups Only	4-8 hours	24 hours
+Automated Backups + Geo-Replication	1-2 hours	15 minutes
+Full HA with Multi-Region Failover	Near Zero (< 5 min)	Near Zero (< 1 min)
+
+A mix of automated backups, geo-redundancy, and high availability ensures a robust disaster recovery plan in Azure. 🚀
+
+✅ Key Takeaways
+
+✔ Define RTO & RPO based on business needs.
+✔ Automate backups for VMs, databases, and storage.
+✔ Enable geo-replication for mission-critical applications.
+✔ Regularly test the DR plan to ensure quick recovery.
+
+This structured document is ready for direct use in enterprise documentation. Let me know if you need any refinements! 😊
