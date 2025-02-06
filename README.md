@@ -17,14 +17,14 @@ What it is: IaC involves using code to manage and provision infrastructure (serv
 **Risk 2: Leaky Secrets Management**
 What it is: Applications frequently require secrets such as passwords, API keys, and database credentials. Storing these directly in code or configuration files poses a significant risk, akin to hiding your house keys under the doormat.  
 Impact: This can lead to unauthorized access, data breaches, and compromised systems.  
-**Mitigation Strategies: ** 
-**Secrets Management Tools:** Utilize specialized tools designed to securely store and manage secrets. These tools encrypt sensitive information and regulate access, much like a secure safe for your valuables.  
-**Environment Variables**: Keep secrets as environment variables and access them during runtime, which helps keep them out of the codebase.  
-**Avoid Hardcoding:** Never hardcode secrets directly into your code; it's similar to writing your bank PIN on a sticky note attached to your ATM card.  
-**Regular Rotation:** Regularly change your secrets to minimize the impact of a potential breach, much like periodically changing the locks on your house.  
-**Compliance Alignment:** These practices help meet standards such as ISO 27001 (A.12.1 - Information Security Policies), GDPR (Article 32 - Security of processing), and SOC 2 (Common Criteria - Security).  
+<h2>Mitigation Strategies:</h2> 
+**<h3>Secrets Management Tools:</h3>** Utilize specialized tools designed to securely store and manage secrets. These tools encrypt sensitive information and regulate access, much like a secure safe for your valuables.  
+<h3>Environment Variables:</h3> Keep secrets as environment variables and access them during runtime, which helps keep them out of the codebase.  
+<h3>Avoid Hardcoding:</h3> Never hardcode secrets directly into your code; it's similar to writing your bank PIN on a sticky note attached to your ATM card.  
+<h3>Regular Rotation:</h3>Regularly change your secrets to minimize the impact of a potential breach, much like periodically changing the locks on your house.  
+<h3>Compliance Alignment:</h3>These practices help meet standards such as ISO 27001 (A.12.1 - Information Security Policies), GDPR (Article 32 - Security of processing), and SOC 2 (Common Criteria - Security).  
 
-**Risk 3: Vulnerable Dependencies  **
+<h3>Risk 3: Vulnerable Dependencies</h3>
 What it is: Modern applications depend on third-party libraries and components, which may harbor vulnerabilities that attackers can exploit. This is comparable to using building materials from a supplier who unknowingly provided defective parts.  
 **Impact:** This can result in application compromise, data breaches, and denial-of-service attacks.  
 
