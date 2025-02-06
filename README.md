@@ -1,6 +1,6 @@
-3. Security & Compliance (ISO, GDPR, SOC 2)
+<h1>3. Security & Compliance (ISO, GDPR, SOC 2)</h1>
 
-Security Risks in DevOps and Mitigation Strategies
+<h2>Security Risks in DevOps and Mitigation Strategies</h2>
 
 DevOps emphasizes speed and efficiency in software development and deployment. However, this rapid pace can introduce security vulnerabilities. Below, we explore three major risks and the strategies to mitigate them.
 
@@ -67,7 +67,7 @@ Mitigation Strategies
 ✔ Software Composition Analysis (SCA) – Utilize SCA tools to analyze dependencies and assess security risks, giving a complete picture of potential weaknesses.
 ✔ Compliance Alignment – These practices support:
 	•	ISO 27001 (A.14.2 – System Development)
-	•	GDPR (Article 32 – Security of Processing)
+	•	GDPR (Article 32 – Security of Processing)<br>
  
 <h1>5. Database & Storage Optimization</h1>
 
