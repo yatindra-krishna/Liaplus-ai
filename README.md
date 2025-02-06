@@ -1,9 +1,3 @@
-# Security, Compliance, and Optimization Guide
-
-This document provides a comprehensive overview of **Security & Compliance (ISO, GDPR, SOC 2)**, **Database & Storage Optimization**, **Automation & Scripting**, and **Disaster Recovery & High Availability**. It includes best practices, risk mitigation strategies, performance optimizations, and automation scripts.
-
----
-
 ## Table of Contents
 
 - [Security & Compliance (ISO, GDPR, SOC 2)](#security--compliance-iso-gdpr-soc-2)
@@ -20,7 +14,7 @@ This document provides a comprehensive overview of **Security & Compliance (ISO,
 
 ---
 
-# Security & Compliance (ISO, GDPR, SOC 2)
+# 3. Security & Compliance (ISO, GDPR, SOC 2)
 
 ## Security Risks in DevOps and Mitigation Strategies
 
@@ -89,7 +83,7 @@ Modern applications rely on third-party libraries, which may contain security vu
 
 ---
 
-# Database & Storage Optimization
+# 5. Database & Storage Optimization
 
 ## Optimizing a PostgreSQL Database for Performance
 
