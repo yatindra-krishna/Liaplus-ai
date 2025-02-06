@@ -154,9 +154,105 @@ FOR VALUES FROM ('2024-01-01') TO ('2024-12-31');
 
 ✅ Performance Improvement: Queries for a specific year now scan only the relevant partition instead of the entire table.
 
-Conclusion
+<h1>6. Automation & Scripting</h1>
 
-By implementing indexing, query optimization, and partitioning, PostgreSQL databases can achieve:
-✅ Faster query execution
-✅ Reduced resource consumption
-✅ Better scalability for large datasets.
+<h2>Task: Write a Bash Script to Automate Server Setup or Log Analysis</h2>
+
+This section provides a Bash script for automating server setup (installing necessary packages, configuring a firewall, and setting up a user) and log analysis (extracting and summarizing error logs). The script is explained in detail.
+
+1. Bash Script for Server Setup (server_setup.sh)
+
+Features:
+
+✔ Installs essential packages (Nginx, Git, Docker)
+✔ Creates a new user with sudo access
+✔ Configures firewall rules (UFW)
+✔ Enables and starts necessary services
+
+Script:
+
+#!/bin/bash
+
+# Define variables
+USER_NAME="deployuser"
+PACKAGES="nginx git docker.io"
+
+echo "Starting server setup..."
+
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Install required packages
+echo "Installing packages: $PACKAGES"
+sudo apt install -y $PACKAGES
+
+# Create a new user and grant sudo privileges
+echo "Creating user: $USER_NAME"
+sudo useradd -m -s /bin/bash -G sudo $USER_NAME
+echo "$USER_NAME:password123" | sudo chpasswd
+
+# Configure firewall (Allow SSH and Nginx)
+echo "Configuring firewall..."
+sudo ufw allow OpenSSH
+sudo ufw allow 'Nginx Full'
+sudo ufw enable
+
+# Enable and start services
+echo "Enabling and starting services..."
+sudo systemctl enable nginx docker
+sudo systemctl start nginx docker
+
+echo "Server setup completed successfully!"
+
+How to Use the Script:
+	1.	Save the script as server_setup.sh.
+	2.	Make it executable:
+
+chmod +x server_setup.sh
+
+
+	3.	Run the script as root or with sudo:
+
+sudo ./server_setup.sh
+
+
+
+✅ This script automates server setup, ensuring consistency and reducing manual configuration time.
+
+2. Bash Script for Log Analysis (log_analysis.sh)
+
+Features:
+
+✔ Analyzes system logs (/var/log/syslog or /var/log/nginx/access.log)
+✔ Counts occurrences of errors
+✔ Extracts and displays critical log messages
+
+Script:
+
+#!/bin/bash
+
+LOG_FILE="/var/log/syslog"  # Change to the appropriate log file
+ERROR_PATTERN="error|failed|critical"
+
+echo "Analyzing log file: $LOG_FILE"
+
+# Count occurrences of errors
+ERROR_COUNT=$(grep -iE "$ERROR_PATTERN" "$LOG_FILE" | wc -l)
+echo "Total number of errors found: $ERROR_COUNT"
+
+# Extract last 10 error messages
+echo "Recent error messages:"
+grep -iE "$ERROR_PATTERN" "$LOG_FILE" | tail -10
+
+echo "Log analysis completed."
+
+How to Use the Script:
+	1.	Save the script as log_analysis.sh.
+	2.	Make it executable:
+
+chmod +x log_analysis.sh
+
+
+	3.	Run the script:
+
+./log_analysis.sh
