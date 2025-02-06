@@ -143,10 +143,9 @@ Usage:
 
 chmod +x server_setup.sh
 sudo ./server_setup.sh
+#6. Bash Script for Log Analysis
 
-Bash Script for Log Analysis
-
-This script analyzes system logs for errors.
+##This script analyzes system logs for errors.
 
 #!/bin/bash
 LOG_FILE="/var/log/syslog"
