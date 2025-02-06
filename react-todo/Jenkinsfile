@@ -17,16 +17,24 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                sh  "cd react-todo/ && docker-compose down && docker-compose up -d "
+                sh "cd react-todo/ && docker-compose down && docker-compose up -d"
+            }
+        }
+
+        // Corrected Sonarqube Stage
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                  
+                    def scannerHome = tool 'SonarScanner'
+                    
+                    withSonarQubeEnv() {
+                        sh "${scannerHome}/bin/sonar-scanner"
+                    }
+                }
             }
         }
     }
-stage('SonarQube Analysis') {
-    def scannerHome = tool 'SonarScanner';
-    withSonarQubeEnv() {
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-  }
 
     post {
         success {
