@@ -1,3 +1,89 @@
+# 1. Cloud Infrastructure & Deployment (Azure)
+
+Task Overview:
+
+Set up a simple web application using Node.js and deploy it on Azure App Service or an Azure Virtual Machine. The application should be publicly accessible via a URL.
+
+Solution Overview:
+
+The web application was deployed on Azure using Azure App Service. The application is configured to run Node.js, and it is accessible via a public URL.
+
+Architecture Diagram:
+
+<img width="1173" alt="Screenshot 2025-02-05 at 9 12 06 PM" src="https://github.com/user-attachments/assets/4de9c375-3918-4ab3-8bc3-4be98451ebaa" />
+
+
+Steps to Deploy the Application:
+	1.	Create an Azure Account and Log in:
+	•	Ensure you have an active Azure subscription.
+	2.	Create a Resource Group:
+	•	In Azure Portal, navigate to Resource Groups.
+	•	Click Add and provide a name for the resource group (cicd-pipeline_group).
+	•	Select a region Central India (zone 1), then click Review + Create.
+	3. Create an Azure Virtual Machine:
+	•	In Azure Portal, navigate to Virtual Machines and click Add.
+	•	Select the Resource Group and configure the VM settings (image, size, authentication).
+	•	Create and ensuring proper network security rules (e.g., open port 80, 8080,9000,3000,5173 etc).
+	4. Set Up Docker on the Azure VM:
+	5. Install Jenkins on the VM:
+	1.	Install Jenkins on the VM:
+	•	Follow installation steps for your VM’s OS (Ubuntu example: sudo apt install openjdk-17-jdk && sudo apt install jenkins).
+	2.	Start Jenkins:
+	•	Access Jenkins via http://98.70.55.30:8080.
+	6. Integrate Jenkins with GitHub:
+	•	GitHub Webhook: In your GitHub repository, add a webhook pointing to Jenkins.
+	•	Jenkins Configuration: Set up a Pipeline Job in Jenkins with GitHub repository details and configure the pipeline using a Jenkinsfile for CI/CD.
+	7. Deploy the Application with Jenkins:
+	•	Set up the Jenkins pipeline to build, test, and deploy my Todo-app.
+	•	On push to GitHub, the webhook triggers Jenkins to pull the code, Do docker compose up, and deploy it to the Azure VM.
+	8. Access the Application:
+	•	After successful deployment, access your app through the public IP of the Azure VM.
+ 
+  <img width="1280" alt="Screenshot 2025-02-05 at 1 25 15 PM" src="https://github.com/user-attachments/assets/fdd23e98-8937-4d7e-badf-8949d7bf6dae" />
+
+This summary outlines the steps for deploying a Todo-app using Azure VM, Docker, and Jenkins, with the CI/CD process set up for automation.
+Azure Configurations Used:
+	•	Resource Group: cicd-pipeline_group
+	•	App Service: Todo-app
+	•	App Service Plan: Azure for Students
+	•	Region: Central India(zone 1)
+	•	Runtime Env: Node.js
+	•	Deployment Source: GitHub
+	•	Public URL: [https://my-nodejs-webapp.azurewebsites.net](http://98.70.55.30:5173/)
+
+Screenshots of a Successful Deployment:
+<img width="1280" alt="Screenshot 2025-02-05 at 2 36 24 PM" src="https://github.com/user-attachments/assets/92d6a41b-7c7b-4e80-8180-56da303fa2e8" />
+<img width="1280" alt="Screenshot 2025-02-05 at 2 46 05 PM" src="https://github.com/user-attachments/assets/4e848de0-6107-4cdc-9e8d-56b892751196" />
+<img width="1280" alt="Screenshot 2025-02-05 at 2 46 17 PM" src="https://github.com/user-attachments/assets/ca69de70-0538-445b-86b0-a42294fc37a6" />
+
+
+<img width="1280" alt="Screenshot 2025-02-05 at 2 47 19 PM" src="https://github.com/user-attachments/assets/8a64577e-5034-471d-99ac-8366e6751f5d" />
+
+2. CI/CD Pipeline Implementation
+
+Task Overview:
+
+Create a CI/CD pipeline to automate the deployment of the Node.js web application using Jenkins.
+
+Solution Overview:
+
+I implemented a Jenkins CI/CD pipeline that automates the deployment of the Node.js web application to Azure App Service. This pipeline includes stages for building, testing, and deploying the application.
+
+Explanation of Different Pipeline Stages:
+	1.	Build Stage:
+	•	Checkout repository: The first step checks out the code from the repository.
+	•	Set up Node.js: It sets up the Node.js environment for the build process.
+	•	Install dependencies: This step runs npm install to install all the necessary packages.
+	•	Run tests: The npm test command is run to ensure that the application passes all tests before deployment.
+	2.	Deploy Stage:
+	•	Checkout repository: The code is checked out again to ensure the latest version is deployed.
+	•	Deploy to Azure: The Azure deployment action is used to deploy the application to Azure App Service. The publish profile (stored securely in GitHub Secrets) is used for authentication.
+
+How Environment Variables/Secrets are Managed:
+		Jenkins Credentials Store: Jenkins provides a Credentials Manager that securely stores sensitive data like usernames, passwords, tokens, and publish profiles. These credentials were added under Jenkins → Manage Jenkins → Manage Credentials. The credentials are stored in a secure manner and are used in the pipeline to interact with Azure, GitHub, and SonarQube.
+
+
+
 <h1>3. Security & Compliance (ISO, GDPR, SOC 2)</h1>
 
 <h2>Security Risks in DevOps and Mitigation Strategies</h2>
