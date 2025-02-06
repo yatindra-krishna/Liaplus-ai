@@ -199,5 +199,54 @@ Security Risks in DevOps & Mitigation
 
 Example:
  CREATE TABLE orders PARTITION BY RANGE (order_date);
+ 
  CREATE TABLE orders_2024 PARTITION OF orders 
+ 
  FOR VALUES FROM ('2024-01-01') TO ('2024-12-31');
+
+ <h1>6. Automation & Scripting</h1>
+ Bash Script for Log Analysis
+
+🔹 Tasks:
+✅ Scan logs for errors/failures
+✅ Count & display last 10 errors
+
+ 	#!/bin/bash
+ 	LOG_FILE="/var/log/syslog"
+	ERROR_PATTERN="error|failed|critical"
+	echo "Analyzing log file: $LOG_FILE"
+	grep -iE "$ERROR_PATTERN" "$LOG_FILE" | tail -10
+
+ Run: bash log_analysis.sh (Extracts critical errors.)
+
+<h1>7. Disaster Recovery & High Availability</h1>
+
+1. Disaster Recovery (DR) Strategy
+
+Objectives: Minimize downtime & data loss, ensure compliance.
+ RTO & RPO:
+  
+ • Mission-Critical Apps: RTO ≤ 5 min, RPO ≤ 1 min (Real-time replication)
+  
+ • Non-Critical Systems: RTO ≤ 12 hrs, RPO ≤ 24 hrs (Daily backups)
+
+2. Backup & DR Strategies (Azure Cloud)
+
+ • Azure VM Backup: Snapshots & full backup (Retention: 7-30 days)
+  
+ • SQL DB Backup: Point-in-Time Restore (PITR) (Retention: 35 days)
+  
+ • Geo-Redundant Storage (GRS): Ensures immediate recovery
+
+3. Automated Backup Setup in Azure
+
+ For Azure VM:
+• Go to Backup Center → Create Vault → Enable Backup
+• Set Backup Policy (Daily 2 AM, Retention: 30 days)
+
+ <h3>High Availability (HA) Best Practices</h3>
+
+• Deploy Across Availability Zones (Multiple data centers)
+• Use Load Balancers (Traffic distribution & auto-failover)
+• Implement Auto-Scaling (Adjust resources as needed)
+• Enable Active Geo-Replication (Multi-region data copies)
