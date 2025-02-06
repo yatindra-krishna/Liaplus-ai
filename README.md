@@ -53,34 +53,36 @@ Azure Configurations Used:
 
 Screenshots of a Successful Deployment:
 <img width="1280" alt="Screenshot 2025-02-05 at 2 36 24 PM" src="https://github.com/user-attachments/assets/92d6a41b-7c7b-4e80-8180-56da303fa2e8" />
+2. CI/CD Pipeline Implementation
+
+Task Overview:
+
+Create a CI/CD pipeline to automate the deployment of the Todo-app web application using Jenkins.
+
+Solution Overview:
+
+I implemented a Jenkins CI/CD pipeline that automates the deployment of the web application to Azure App Service. This pipeline includes stages for building, testing, and deploying the application.
+
+Explanation of Different Pipeline Stages:
+	1.	Build Stage:
+	•	Checkout Repository: The pipeline begins by checking out the latest code from the GitHub repository.
+	•	Set Up Docker: The Docker environment is set up for building the application image.
+	•	Build Docker Image: Using Docker Compose, the pipeline builds a Docker image of the application.
+	•	Install Dependencies: Inside the Docker container, dependencies are installed using npm install.
+	•	Run Tests: The tests are executed using npm test to ensure that the application is stable and working as expected.
+	2.	Quality Analysis Stage (SonarQube Integration):
+	•	Scan with SonarQube: The code is scanned using SonarQube for quality checks, including static code analysis and detection of bugs or vulnerabilities.
+	3. 	Deploy Stage (Using Jenkins, Docker Compose, and Azure VM):
+	•	Run Docker Container: In this stage, Jenkins triggers the execution of the Docker Compose file to bring up the application containers on the Azure VM using the command: docker-compose down to stop any existing containers and docker-compose up -d to start new ones.
+	•	Deploy to Azure VM: The final deployment step deploys the application to the Azure Virtual Machine using Docker Compose, ensuring the app runs in a consistent environment across deployments.
+How Environment Variables/Secrets are Managed:
+		Jenkins Credentials Store: Jenkins provides a Credentials Manager that securely stores sensitive data like usernames, passwords, tokens, and publish profiles. These credentials were added under Jenkins → Manage Jenkins → Manage Credentials. The credentials are stored in a secure manner and are used in the pipeline to interact with Azure, GitHub, and SonarQube.
+  
 <img width="1280" alt="Screenshot 2025-02-05 at 2 46 05 PM" src="https://github.com/user-attachments/assets/4e848de0-6107-4cdc-9e8d-56b892751196" />
 <img width="1280" alt="Screenshot 2025-02-05 at 2 46 17 PM" src="https://github.com/user-attachments/assets/ca69de70-0538-445b-86b0-a42294fc37a6" />
 
 
 <img width="1280" alt="Screenshot 2025-02-05 at 2 47 19 PM" src="https://github.com/user-attachments/assets/8a64577e-5034-471d-99ac-8366e6751f5d" />
-
-2. CI/CD Pipeline Implementation
-
-Task Overview:
-
-Create a CI/CD pipeline to automate the deployment of the Node.js web application using Jenkins.
-
-Solution Overview:
-
-I implemented a Jenkins CI/CD pipeline that automates the deployment of the Node.js web application to Azure App Service. This pipeline includes stages for building, testing, and deploying the application.
-
-Explanation of Different Pipeline Stages:
-	1.	Build Stage:
-	•	Checkout repository: The first step checks out the code from the repository.
-	•	Set up Node.js: It sets up the Node.js environment for the build process.
-	•	Install dependencies: This step runs npm install to install all the necessary packages.
-	•	Run tests: The npm test command is run to ensure that the application passes all tests before deployment.
-	2.	Deploy Stage:
-	•	Checkout repository: The code is checked out again to ensure the latest version is deployed.
-	•	Deploy to Azure: The Azure deployment action is used to deploy the application to Azure App Service. The publish profile (stored securely in GitHub Secrets) is used for authentication.
-
-How Environment Variables/Secrets are Managed:
-		Jenkins Credentials Store: Jenkins provides a Credentials Manager that securely stores sensitive data like usernames, passwords, tokens, and publish profiles. These credentials were added under Jenkins → Manage Jenkins → Manage Credentials. The credentials are stored in a secure manner and are used in the pipeline to interact with Azure, GitHub, and SonarQube.
 
 
 
