@@ -1,5 +1,6 @@
 <h1>3. Security & Compliance (ISO, GDPR, SOC 2)</h1>
-Document: Security Risks in DevOps and Mitigation Strategies
+ <h2>Security Risks in DevOps and Mitigation Strategies</h2>
+ 
 DevOps focuses on enhancing speed and efficiency in software development and deployment. However, this rapid pace can sometimes lead to security vulnerabilities. We will examine three significant risks and the strategies to mitigate them.
 
 Risk 1: Insecure Infrastructure as Code (IaC)
