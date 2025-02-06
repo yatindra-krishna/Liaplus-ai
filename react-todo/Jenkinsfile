@@ -21,16 +21,14 @@ pipeline {
             }
         }
 
-        // Corrected Sonarqube Stage
+        // Updated SonarQube Analysis Stage
         stage('SonarQube Analysis') {
+            environment {
+                SONAR_URL = "http://98.70.55.30:9000/"
+            }
             steps {
-                script {
-                  
-                    def scannerHome = tool 'SonarScanner'
-                    
-                    withSonarQubeEnv() {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
+                withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+                    sh 'cd react-todo/ && mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'
                 }
             }
         }
